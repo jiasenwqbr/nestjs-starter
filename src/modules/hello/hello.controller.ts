@@ -16,8 +16,9 @@ import {
   ApiResponse,
   ApiBody,
   ApiParam,
+  ApiQuery,
 } from '@nestjs/swagger';
-import { Hello } from './classes/hello';
+import { Hello, UserRole } from './classes/hello';
 @ApiBearerAuth()
 @ApiTags('hello')
 @Controller('/hello')
@@ -25,6 +26,8 @@ export class HelloController {
   constructor(private readonly helloService: HelloService) {}
   // search
   @Get()
+  @ApiQuery({ name: 'name', required: false })
+  @ApiQuery({ name: 'role', enum: UserRole })
   @ApiResponse({
     status: 200,
     description: 'get ...',
@@ -50,6 +53,7 @@ export class HelloController {
 
   // delete
   @Delete()
+  @ApiQuery({ name: 'id', required: true })
   remove(@Query() { id }): string {
     return this.helloService.remove(id);
   }
