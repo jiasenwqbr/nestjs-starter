@@ -22,6 +22,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
+import { ParseIntPipe } from '../pipes/parse-int.pipe';
 @ApiBearerAuth()
 @ApiTags('exception')
 @UseFilters(new HttpExceptionFilter())
@@ -52,13 +53,16 @@ export class ExceptionController {
     return this.exceptionService.save(message);
   }
 
-  @Patch()
+  @Patch(':id')
   @ApiParam({ name: 'id' })
   @ApiBody({ description: 'please input message' })
-  update(@Param() { id }, @Body() { message }): string {
+  update(@Param('id', new ParseIntPipe()) id, @Body() { message }): string {
+    console.log(typeof id);
     return this.exceptionService.update(id, message);
   }
+
   @Delete()
+  @ApiQuery({ name: 'id', description: 'id is required' })
   remove(@Query() { id }): string {
     return this.exceptionService.remove(id);
   }
