@@ -7,11 +7,13 @@ import { ConfigModule } from 'nestjs-config';
 import { resolve } from 'path';
 import { StatusMonitorModule } from 'nest-status-monitor';
 import statusMonitor from './config/statusMonitor';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.load(resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
     StatusMonitorModule.setUp(statusMonitor),
+    AuthModule,
     HelloModule,
     ExceptionModule,
     RoleGuardModule,
