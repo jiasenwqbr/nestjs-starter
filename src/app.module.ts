@@ -10,6 +10,7 @@ import statusMonitor from './config/statusMonitor';
 import { AuthModule } from './modules/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/users.module';
+import { TasksModule } from './modules/tasks/tasks.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { UserModule } from './modules/user/users.module';
     ExceptionModule,
     RoleGuardModule,
     UserModule,
+    TasksModule,
   ],
 })
 export class AppModule {
