@@ -12,6 +12,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/users.module';
 import { TasksModule } from './modules/tasks/tasks.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { AudioModule } from './modules/jobs/audio/audio.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { ScheduleModule } from '@nestjs/schedule';
     UserModule,
     ScheduleModule.forRoot(),
     TasksModule,
+    AudioModule,
   ],
 })
 export class AppModule {
