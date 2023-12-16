@@ -13,6 +13,7 @@ import { UserModule } from './modules/user/users.module';
 import { TasksModule } from './modules/tasks/tasks.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { AudioModule } from './modules/jobs/audio/audio.module';
+import { AlbumModule } from './modules/album/album.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { AudioModule } from './modules/jobs/audio/audio.module';
     ScheduleModule.forRoot(),
     TasksModule,
     AudioModule,
+    AlbumModule,
   ],
 })
 export class AppModule {
