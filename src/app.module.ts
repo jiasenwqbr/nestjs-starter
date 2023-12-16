@@ -11,6 +11,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/users.module';
 import { TasksModule } from './modules/tasks/tasks.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { TasksModule } from './modules/tasks/tasks.module';
     ExceptionModule,
     RoleGuardModule,
     UserModule,
+    ScheduleModule.forRoot(),
     TasksModule,
   ],
 })
